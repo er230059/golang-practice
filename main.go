@@ -3,13 +3,16 @@ package main
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
+	"github.com/er230059/golang-practice/router"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello World!")
-	})
-	r.Run()
+	router := router.InitRouter()
+
+	s := &http.Server{
+		Addr:    ":8000",
+		Handler: router,
+	}
+
+	s.ListenAndServe()
 }
