@@ -24,7 +24,8 @@ func Login(c *gin.Context) {
 	token, err := auth.Login(u.Email, u.Password)
 
 	if err != nil {
-		if err.Error() == "sql: no rows in result set" {
+		if err.Error() == "sql: no rows in result set" ||
+			err.Error() == "crypto/bcrypt: hashedPassword is not the hash of the given password" {
 			c.Status(http.StatusUnauthorized)
 			return
 		}

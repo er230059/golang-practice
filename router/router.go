@@ -19,7 +19,7 @@ func InitRouter() *gin.Engine {
 	authorized.Use(middleware.VerifyToken)
 	{
 		authorized.GET("/users/:id", api.GetUser)
-		authorized.PATCH("/users/:id", api.EditUser)
+		authorized.PATCH("/users/:id", api.UpdateUser)
 	}
 
 	return r

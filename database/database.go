@@ -10,7 +10,7 @@ import (
 var dbInstance *sql.DB
 
 func initDb() {
-	db, err := sql.Open("mysql", "root:er230059@/go")
+	db, err := sql.Open("mysql", "lchuang:er230059@/go")
 	if err != nil {
 		fmt.Printf("ERR: %s\n", err)
 		panic(err)
