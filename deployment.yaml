@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-practice-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: golang-practice
+    spec:
+      containers:
+        - name: golang-practice-container
+          image: er230059/golang-practice
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: golang-practice-config
+  selector:
+    matchLabels:
+      app: golang-practice

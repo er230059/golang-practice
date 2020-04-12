@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: api
+spec:
+  rules:
+    - host: go.ingress.test
+      http:
+        paths:
+          - backend:
+              serviceName: golang-practice-service
+              servicePort: 80
